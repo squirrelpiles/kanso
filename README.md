@@ -17,9 +17,9 @@ function.
 ### API
 
 
-#### delete(username, callback)
+#### delete(username, url, callback)
 
-Deletes an existing user document, given its username. You
+Deletes an existing user document, given its username, on the CouchDB server specified by url. You
 must be logged in as an administrative user for this function
 to succeed.
 
@@ -34,9 +34,9 @@ users.delete('username', function (err) {
 ```
 
 
-#### get(username, callback)
+#### get(username, url, callback)
 
-Get a single user by username. The third argument to the callback is an info
+Get a single user by username on the CouchDB server specified by url.  The third argument to the callback is an info
 object which returns the authdb used, and the real id of the user with
 "org.couchdb.user:" prefix.
 
@@ -51,9 +51,9 @@ users.get('testuser', function (err, doc) {
 ```
 
 
-#### list([q], callback)
+#### list([q], url, callback)
 
-List users in the auth database. By default, it will list all users.
+List users in the auth database on the CouchDB server specified by url.  By default, it will list all users.
 By using the optional `q` parameter, you can pass additional options to the
 \_al\_docs` view for the auth database.
 
@@ -68,9 +68,9 @@ users.list(function (err, list) {
 ```
 
 
-#### create(username, password, [properties], callback)
+#### create(username, password, [properties], url, callback)
 
-Creates a new user document with given username and password.
+Creates a new user document with given username and password on the CouchDB server specified by url.
 If properties.roles contains \_admin', user will be made admin.
 
 * __username__ - _String_ - The username of the new user
@@ -86,9 +86,9 @@ users.create('testuser', 'testing', {roles: ['example']}, function (err) {
 ```
 
 
-#### update(username, password, properties, callback)
+#### update(username, password, properties, url, callback)
 
-Updates an existing user document. Similar usage to the create function.
+Updates an existing user document on the CouchDB server specified by 'url'. Similar usage to the create function.
 
 * __username__ - _String_ - The username of the new user
 * __password__ - _String_ - The unhashed password for the new user
